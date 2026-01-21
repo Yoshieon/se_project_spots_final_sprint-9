@@ -158,6 +158,7 @@
 .modal__button_cancel {
   background-color: #ffffff;
   color: #212121;
+  flex-direction: row;
 }
 
 .modal__button_cancel:hover {
@@ -177,6 +178,14 @@
   background-color: #212121;
   color: #ffffff;
   cursor: pointer;
+}
+
+.modal__title_delete {
+  font-weight: 500;
+  font-style: medium;
+  line-height: 100%;
+  font-size: 24px;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
 .modal__input_type_error {

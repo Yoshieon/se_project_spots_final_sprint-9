@@ -38,11 +38,11 @@ const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
 const editProfileNameInput = editProfileModal.querySelector(
-  "#profile-name-input"
+  "#profile-name-input",
 );
 
 const editProfileDescriptionInput = editProfileModal.querySelector(
-  "#profile-description-input"
+  "#profile-description-input",
 );
 
 // New post modal elements
@@ -150,7 +150,7 @@ editProfileBtn.addEventListener("click", function () {
   resetValidation(
     editProfileForm,
     [editProfileNameInput, editProfileDescriptionInput],
-    settings
+    settings,
   );
   openModal(editProfileModal);
 });
@@ -288,18 +288,19 @@ function handleAddCardSubmit(evt) {
     });
 }
 
-const OutsiddeClickCloseModal = (evt) => {
+const outerClick = (evt) => {
   if (evt.target.classList.contains("modal_is-opened")) {
     closeModal(evt.target);
   }
 };
-document.addEventListener("click", OutsiddeClickCloseModal);
+document.addEventListener("click", outerClick);
 newPostForm.addEventListener("submit", handleAddCardSubmit);
 document.addEventListener("keydown", (evt) => {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal_is-opened");
     closeModal(openedModal);
   }
+  document.removeEventListener("keydown", closeModal);
 });
 
 enableValidation(settings);
