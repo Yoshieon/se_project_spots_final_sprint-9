@@ -6,7 +6,6 @@ Recording Website here: https://drive.google.com/drive/folders/1ZvYMJTUl0yg5kzTG
 
 A website project that features button functionalities and interaction links.
 
-!! NOTE: When trying to run 'npm run dev' You will need to go to package.json and change the type to "commonjs", once it compiles, change it back to "Module". !! If there's a solution to this, I would be very please to get this situated out. 
 
 ## Tech Stack
 

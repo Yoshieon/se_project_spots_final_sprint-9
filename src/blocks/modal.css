@@ -72,6 +72,13 @@
   flex-direction: column;
 }
 
+#delete-form {
+  flex-direction: row;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+}
+
 .modal__label {
   margin: 0 0 32px;
   font-family: Poppins, Arial, Helvetica, sans-serif;

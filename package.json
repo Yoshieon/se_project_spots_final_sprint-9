@@ -12,7 +12,6 @@
   },
   "license": "ISC",
   "author": "Joe Roodvoets",
-  "type": "module",
   "main": "./src/pages/index.js",
   "scripts": {
     "build": "webpack --mode production",

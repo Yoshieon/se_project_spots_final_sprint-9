@@ -198,8 +198,8 @@ function handleEditProfileSubmit(evt) {
       about: editProfileDescriptionInput.value,
     })
     .then((data) => {
-      profileDescriptionEl.textContent = data.name;
-      profileNameEl.textContent = data.about;
+      profileDescriptionEl.textContent = data.about;
+      profileNameEl.textContent = data.name;
       closeModal(editProfileModal);
     })
     .catch(console.error)
@@ -254,7 +254,7 @@ function handleAvatarSubmit(evt) {
   api
     .editAvatarInfo(avatarInput.value)
     .then((data) => {
-      console.log(data);
+      document.querySelector(".profile__avatar").src = data.avatar;
       closeModal(avatarModal);
     })
     .catch(console.error);
