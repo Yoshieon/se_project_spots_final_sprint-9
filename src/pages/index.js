@@ -7,13 +7,25 @@ import {
 } from "../scripts/validation.js";
 import { setButtonText } from "../utils/helpers.js";
 import Api from "../utils/Api.js";
+import {
+  API_BASE_URL,
+  API_AUTHORIZATION_TOKEN,
+  API_CONTENT_TYPE,
+  PROFILE_SELECTORS,
+  MODAL_IDS,
+  MODAL_SELECTORS,
+  INPUT_SELECTORS,
+  TEMPLATE_SELECTORS,
+  BUTTON_STATES,
+  CARD_CLASSES,
+} from "../utils/constants.js";
 
 // Destructure the second item in the callback of the .then()
 const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  baseUrl: API_BASE_URL,
   headers: {
-    authorization: "6cefa111-f0f6-4efc-86cb-f845a42393ef",
-    "Content-Type": "application/json",
+    authorization: API_AUTHORIZATION_TOKEN,
+    "Content-Type": API_CONTENT_TYPE,
   },
 });
 
@@ -28,70 +40,82 @@ api
     // Handle the user's information
     profileNameEl.textContent = userInfo.name;
     profileDescriptionEl.textContent = userInfo.about;
-    document.querySelector(".profile__avatar").src = userInfo.avatar;
+    document.querySelector(PROFILE_SELECTORS.avatarImg).src = userInfo.avatar;
   })
   .catch(console.error);
 
 // Edit profiles Elements
-const editProfileBtn = document.querySelector(".profile__edit-btn");
-const editProfileModal = document.querySelector("#edit-profile-modal");
-const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
-const editProfileForm = editProfileModal.querySelector(".modal__form");
+const editProfileBtn = document.querySelector(PROFILE_SELECTORS.editBtn);
+const editProfileModal = document.querySelector(MODAL_IDS.editProfile);
+const editProfileCloseBtn = editProfileModal.querySelector(
+  MODAL_SELECTORS.closeBtn,
+);
+const editProfileForm = editProfileModal.querySelector(MODAL_SELECTORS.form);
 const editProfileNameInput = editProfileModal.querySelector(
-  "#profile-name-input",
+  INPUT_SELECTORS.editProfileName,
 );
 
 const editProfileDescriptionInput = editProfileModal.querySelector(
-  "#profile-description-input",
+  INPUT_SELECTORS.editProfileDescription,
 );
 
 // New post modal elements
-const newPostBtn = document.querySelector(".profile__add-btn");
-const newPostModal = document.querySelector("#new-post-modal");
-const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
-const newPostCaptionInput = newPostModal.querySelector("#post-caption-input");
-const newPostImageInput = newPostModal.querySelector("#card-image-input");
-const newPostForm = newPostModal.querySelector(".modal__form");
+const newPostBtn = document.querySelector(PROFILE_SELECTORS.addBtn);
+const newPostModal = document.querySelector(MODAL_IDS.newPost);
+const newPostCloseBtn = newPostModal.querySelector(MODAL_SELECTORS.closeBtn);
+const newPostCaptionInput = newPostModal.querySelector(
+  INPUT_SELECTORS.newPostCaption,
+);
+const newPostImageInput = newPostModal.querySelector(
+  INPUT_SELECTORS.newPostImage,
+);
+const newPostForm = newPostModal.querySelector(MODAL_SELECTORS.form);
 
 // Profile elements
-const profileNameEl = document.querySelector(".profile__name");
-const profileDescriptionEl = document.querySelector(".profile__description");
+const profileNameEl = document.querySelector(PROFILE_SELECTORS.nameEl);
+const profileDescriptionEl = document.querySelector(
+  PROFILE_SELECTORS.descriptionEl,
+);
 
 // Preview modal elements
-const previewModal = document.querySelector("#preview-modal");
-const previewForm = previewModal.querySelector(".modal__form");
-const previewSubmitBtn = previewModal.querySelector(".modal__button");
-const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
-const previewImageEl = previewModal.querySelector(".modal__image");
-const previewCaptionEl = previewModal.querySelector(".modal__caption");
+const previewModal = document.querySelector(MODAL_IDS.preview);
+const previewForm = previewModal.querySelector(MODAL_SELECTORS.form);
+const previewSubmitBtn = previewModal.querySelector(MODAL_SELECTORS.button);
+const previewModalCloseBtn = previewModal.querySelector(
+  MODAL_SELECTORS.closeBtn,
+);
+const previewImageEl = previewModal.querySelector(MODAL_SELECTORS.image);
+const previewCaptionEl = previewModal.querySelector(MODAL_SELECTORS.caption);
 
 // Delete form elements
-const deleteModal = document.querySelector("#delete-modal");
-const deleteForm = deleteModal.querySelector(".modal__form");
-const deleteModalCloseBtn = deleteModal.querySelector(".modal__close-btn");
-const deleteModalCancelBtn = deleteModal.querySelector(".modal__button_cancel");
+const deleteModal = document.querySelector(MODAL_IDS.delete);
+const deleteForm = deleteModal.querySelector(MODAL_SELECTORS.form);
+const deleteModalCloseBtn = deleteModal.querySelector(MODAL_SELECTORS.closeBtn);
+const deleteModalCancelBtn = deleteModal.querySelector(
+  MODAL_SELECTORS.cancelButton,
+);
 
 // Avatar modal elements
-const avatarModal = document.querySelector("#avatar-modal");
-const avatarModalBtn = document.querySelector(".profile__avatar-btn");
-const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
-const avatarForm = avatarModal.querySelector(".modal__form");
-const avatarInput = avatarModal.querySelector("#profile-avatar-input");
+const avatarModal = document.querySelector(MODAL_IDS.avatar);
+const avatarModalBtn = document.querySelector(PROFILE_SELECTORS.avatarBtn);
+const avatarModalCloseBtn = avatarModal.querySelector(MODAL_SELECTORS.closeBtn);
+const avatarForm = avatarModal.querySelector(MODAL_SELECTORS.form);
+const avatarInput = avatarModal.querySelector(INPUT_SELECTORS.avatarInput);
 
 const cardTemplate = document
-  .querySelector("#card-template")
+  .querySelector(TEMPLATE_SELECTORS.cardTemplate)
   .content.querySelector(".card");
 
-const cardsList = document.querySelector(".cards__list");
+const cardsList = document.querySelector(TEMPLATE_SELECTORS.cardsList);
 
 let selectedCard, selectedCardID;
 
 function handleLike(evt, id) {
-  const isLiked = evt.target.classList.contains("card__like-btn_active");
+  const isLiked = evt.target.classList.contains(CARD_CLASSES.likeBtnActive);
   api
     .changeLikeStatus(id, isLiked)
     .then(() => {
-      evt.target.classList.toggle("card__like-btn_active");
+      evt.target.classList.toggle(CARD_CLASSES.likeBtnActive);
     })
     .catch(console.error);
 }
