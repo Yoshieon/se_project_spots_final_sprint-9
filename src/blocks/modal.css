@@ -139,6 +139,9 @@
   width: 198px;
   height: 24px;
   line-height: 120%;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  word-spacing: 2px;
 }
 
 .modal__button {

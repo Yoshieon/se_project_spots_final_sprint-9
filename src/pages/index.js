@@ -61,7 +61,7 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 const previewModal = document.querySelector("#preview-modal");
 const previewForm = previewModal.querySelector(".modal__form");
 const previewSubmitBtn = previewModal.querySelector(".modal__button");
-const previewModalCloseBtn = document.querySelector(".modal__close-btn");
+const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewCaptionEl = previewModal.querySelector(".modal__caption");
 
@@ -131,17 +131,20 @@ function getCardElement(data) {
   return cardElement;
 }
 
-// likeButton.addEventListener("click", (evt) => getCardElement(evt, data._id));
-// deleteButton.addEventListener("click", () =>
-//   handleDeleteCard(cardElement, data._id)
-// );
+function handleEscapeKey(evt) {
+  if (evt.key === "Escape") {
+    closeModal();
+  }
+}
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscapeKey);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscapeKey);
 }
 
 editProfileBtn.addEventListener("click", function () {
@@ -153,10 +156,6 @@ editProfileBtn.addEventListener("click", function () {
     settings,
   );
   openModal(editProfileModal);
-});
-
-editProfileCloseBtn.addEventListener("click", function () {
-  closeModal(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
@@ -230,14 +229,8 @@ function handleDeleteSubmit(evt) {
 function handleDeleteCard(cardElement, cardId) {
   selectedCard = cardElement;
   selectedCardID = cardId;
-  console.log(cardId);
   openModal(deleteModal);
 }
-
-// likeButton.addEventListener("click", (evt) => getCardElement(evt, data._id));
-// deleteButton.addEventListener("click", () =>
-//   handleDeleteCard(cardElement, data._id)
-// );
 
 deleteForm.addEventListener("submit", handleDeleteSubmit);
 
@@ -251,13 +244,21 @@ deleteModalCancelBtn.addEventListener("click", function () {
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
+
+  const submitButton = evt.target.querySelector(`[type="submit"]`);
+
+  setButtonText(submitButton, true, "Save", "Saving...");
+
   api
     .editAvatarInfo(avatarInput.value)
     .then((data) => {
       document.querySelector(".profile__avatar").src = data.avatar;
       closeModal(avatarModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitButton, false, "Save", "Saving...");
+    });
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
