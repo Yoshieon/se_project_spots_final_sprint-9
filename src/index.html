@@ -147,7 +147,10 @@
     </div>
 
     <div class="modal modal_type_preview" id="preview-modal">
-      <button type="button" class="modal__close-btn"></button>
+      <button
+        type="button"
+        class="modal__close-btn modal__close_type_preview"
+      ></button>
       <div class="modal__image-container">
         <img src="#" alt="" class="modal__image" />
         <p class="modal__caption"></p>
@@ -166,6 +169,7 @@
               class="modal__input"
               name="avatar"
               placeholder="Avatar goes here"
+              type="url"
               required
             />
             <span id="profile-avatar-input-error" class="modal__error"></span>

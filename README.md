@@ -19,6 +19,6 @@ A website project that features button functionalities and interaction links.
 
 This webpage is deployed to Github Pages
 
-- [Deployment Link] (https://yoshieon.github.io/se_project_spots/)
-- [Deployment Link] (https://www.loom.com/share/65d9824329a34ec3b7053d0f7d3292ad)
-- [Deployment Link] (https://www.loom.com/share/9eaa49d30fff4a43a402f1989e6db714) - Sprint 9
+- [Deployment Link](https://yoshieon.github.io/se_project_spots/)
+- [Deployment Link](https://www.loom.com/share/65d9824329a34ec3b7053d0f7d3292ad)
+- [Deployment Link](https://www.loom.com/share/9eaa49d30fff4a43a402f1989e6db714) - Sprint 9
