@@ -1,21 +1,24 @@
-# Project 3: Spots
+# Spots
 
-### Overview  
+Recording Website here: https://drive.google.com/drive/folders/1ZvYMJTUl0yg5kzTG0XxoHCEMHQX1TTcG?usp=sharing
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+## Description
+
+A website project that features button functionalities and interaction links.
+
+
+## Tech Stack
+
+- HTML
+- CSS
+- Javascript
+- Responsive Design
+- Webpack
+
+## Deployment
+
+This webpage is deployed to Github Pages
+
+- [Deployment Link](https://yoshieon.github.io/se_project_spots/)
+- [Deployment Link](https://www.loom.com/share/65d9824329a34ec3b7053d0f7d3292ad)
+- [Deployment Link](https://www.loom.com/share/9eaa49d30fff4a43a402f1989e6db714) - Sprint 9
