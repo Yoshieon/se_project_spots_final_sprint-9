@@ -52,7 +52,8 @@
 
 .modal__close_type_preview {
   background-image: url(../images/Close-Icon.svg);
-  top: 40px;
+  top: 0;
+  right: -40px;
   position: absolute;
   width: 40px;
   height: 40px;
